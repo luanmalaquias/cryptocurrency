@@ -34,6 +34,17 @@ const fetchBitcoin = () => {
 function fixList(listJson){
     list = listJson["ticker"]["markets"]
 
+    // organizando a lista em ordem crescente
+    for(var i=0; i<list.length; i++){
+        for(var j=0; j<list.length-1-i; j++) {
+            if(list[j]['price'] > list[j + 1]['price']) {
+                var aux = list[j];
+                list[j] = list[j + 1];
+                list[j + 1] = aux;
+            }
+        }
+    }
+
     // removendo casas decimais
     for(var i=0; i<list.length; i++){
 
@@ -47,18 +58,7 @@ function fixList(listJson){
         item = item.toLocaleString("pt-br", {minimumFractionDigits: 2 , style: 'currency', currency: 'BRL'})
         item = item.replace("R$","")
         list[i]['volume'] = item
-    }
-
-    // organizando a lista em ordem crescente
-    for(var i=0; i<list.length; i++){
-        for(var j=0; j<list.length-1-i; j++) {
-            if(list[j]['price'] > list[j + 1]['price']) {
-                var aux = list[j];
-                list[j] = list[j + 1];
-                list[j + 1] = aux;
-            }
-        }
-    }
+    }    
 
     return list
 }
