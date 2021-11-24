@@ -1,0 +1,71 @@
+* {
+    font-size: 1rem;
+}
+
+.cartao {
+    cursor: default;
+    width: 230px;
+    height: 370px;
+    border-radius: 10px;
+    color: #f4f4f4;
+    /*background-image: linear-gradient(to top, #4d4d4d, #7d7d7d);*/
+    background-color: #262626;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: 0.1s;
+}
+
+.cartao:hover .card-text {
+    transform: translateZ(50px) !important;
+}
+
+.cartao:hover {
+    box-shadow: 1px 1px 1px rgb(255, 255, 255),
+                5px 2px 1px rgb(194, 194, 194),
+                10px -50px 0px rgb(247, 147, 26),
+                10px 5px 1px rgb(134, 134, 134),
+                15px 8px 1px rgb(71, 71, 71),
+                20px 10px 20px rgb(247, 147, 26);
+}
+
+#platformUsd:hover,
+#platformBrl:hover{
+    color: rgb(247, 147, 26);
+    cursor: pointer
+}
+
+.js-tilt-glare {
+    border-radius: 10px;
+}
+
+#principal, #plataformas{
+    animation: close .2s normal;
+}
+
+
+td, th{
+    animation: close .3s normal;
+}
+
+@keyframes close{
+    from{
+        transform: scale(0, 0);
+    }to{
+        transform: scale(1, 1);
+    }
+}
+
+@media (max-width: 1000px){
+    *{
+        font-size: 3rem;
+    }
+
+    .cartao{
+        width: auto;
+        height: 1200px;
+    }
+
+    td, th, i, button, p{
+        font-size: 1rem !important;
+    }
+}
