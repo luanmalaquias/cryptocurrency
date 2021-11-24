@@ -37,7 +37,7 @@ function fixList(listJson){
     // organizando a lista em ordem crescente
     for(var i=0; i<list.length; i++){
         for(var j=0; j<list.length-1-i; j++) {
-            if(list[j]['price'] > list[j + 1]['price']) {
+            if(parseFloat(list[j]['price']) > parseFloat(list[j + 1]['price'])) {
                 var aux = list[j];
                 list[j] = list[j + 1];
                 list[j + 1] = aux;
