@@ -21,7 +21,7 @@ const fetchBitcoin = () => {
                 var celula3 = linha.insertCell(2); 
                 celula1.innerHTML = list[i]["market"]
                 celula2.innerHTML =  moeda + " " + list[i]["price"] + " " + local
-                celula3.innerHTML =  moeda + " " + list[i]["volume"] + " " + local           
+                celula3.innerHTML =  moeda + " " + list[i]["volume"] + " " + local
             }
         })
     }
@@ -36,12 +36,17 @@ function fixList(listJson){
 
     // removendo casas decimais
     for(var i=0; i<list.length; i++){
-        index = list[i]['price'].indexOf(".")+3
-        list[i]['price'] = list[i]['price'].substr(0, index)
-        list[i]['price'] = list[i]['price'].replace('.',',')
 
-        list[i]['volume'] = list[i]['volume'].toFixed(2)
-        list[i]['volume'] = list[i]['volume'].toString().replace(".",",")
+        var item = list[i]['price']
+        item = parseFloat(item).toLocaleString("pt-br", {minimumFractionDigits: 2 , style: 'currency', currency: 'BRL'})
+        item = item.replace("R$","")
+        list[i]['price'] = item
+
+
+        item = list[i]['volume']
+        item = item.toLocaleString("pt-br", {minimumFractionDigits: 2 , style: 'currency', currency: 'BRL'})
+        item = item.replace("R$","")
+        list[i]['volume'] = item
     }
 
     // organizando a lista em ordem crescente
