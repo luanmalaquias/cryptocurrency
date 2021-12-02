@@ -1,5 +1,3 @@
-document.getElementById("plataformas").hidden = true
-
 const fetchBitcoin = () => {
     const urlUsd = 'https://api.cryptonator.com/api/full/btc-usd'
     const urlBrl = 'https://api.cryptonator.com/api/full/btc-brl'
@@ -63,7 +61,6 @@ function fixList(listJson){
     return list
 }
 
-fetchBitcoin()
 
 function hideComponent(elemento){
     if(elemento == "principal"){
@@ -80,5 +77,7 @@ function hideComponent(elemento){
 function visitSite(elementId){
     var search = "https://www.google.com/search?q=Bitcoin+" + document.getElementById(elementId).textContent
     window.open(search, '_blank').focus();
-    console.log("clicou")
 }
+
+document.getElementById("plataformas").hidden = true
+fetchBitcoin()
